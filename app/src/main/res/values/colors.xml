@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6DA7F0</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="red">#C41424</color>
+    <color name="green">#1D9C21</color>
+
+    <color name="savebtn">#34B438</color>
+    <color name="backbtn">#E9A130</color>
+
+</resources>

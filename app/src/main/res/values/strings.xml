@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">CashBook</string>
+
+    <!--    beranda-->
+    <string name="rangkuman">Rangkuman Bulan Ini</string>
+    <string name="tambah_pemasukan">Tambah Pemasukan</string>
+    <string name="tambah_pengeluaran">Tambah Pengeluaran</string>
+    <string name="detail">Detail Cah Flow</string>
+    <string name="pengaturan">Pengaturan</string>
+
+<!--    btn-->
+    <string name="simpan">Simpan</string>
+    <string name="kembali"> &lt;&lt; kembali</string>
+
+<!--    pengaturan-->
+    <string name="gantipassword"><u>Ganti Password</u></string>
+    <string name="passwordsaatini">Password Saat Ini</string>
+    <string name="passwordbaru">Password Baru</string>
+    <string name="about">About This App..</string>
+    <string name="aplikasi">Aplikasi ini dibuat oleh:</string>
+    <string name="nama">Nama : Hernanda Candra P.</string>
+    <string name="nim">NIM  : 1741720184</string>
+    <string name="tanggal">Tanggal: 24 Oktober 2021</string>
+
+</resources>
