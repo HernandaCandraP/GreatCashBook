@@ -13,7 +13,7 @@
         android:layout_marginStart="15dp"
         android:layout_marginTop="20dp"
         android:text="Pengaturan"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

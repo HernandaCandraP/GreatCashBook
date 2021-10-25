@@ -15,8 +15,11 @@ import com.anychart.enums.MarkerType;
 import com.anychart.enums.TooltipPositionMode;
 import com.anychart.graphics.vector.Stroke;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Random;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -25,11 +28,13 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import org.hernanda.cashbook.Helper.SQLiteHelper;
 
 public class Beranda extends AppCompatActivity {
     private SQLiteHelper sqLiteHelper;
+    private TextView pengeluaran, pemasukan;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,13 +43,16 @@ public class Beranda extends AppCompatActivity {
 
         sqLiteHelper = new SQLiteHelper(this);
 
-        Integer Pemasukan = sqLiteHelper.countDataPemasukan();
-        Integer Pengeluaran = sqLiteHelper.countDataPemasukan();
+        pengeluaran = findViewById(R.id.pengeluaran);
+        pemasukan = findViewById(R.id.pemasukan);
 
 
 
-//        System.out.println(sqLiteHelper.countDataPemasukan());
+        Integer countPengeluaran = sqLiteHelper.countDataPengeluaran();
+        Integer countPemasukan = sqLiteHelper.countDataPemasukan();
 
+        pemasukan.setText("Pemasukan: " + formatRupiah(Double.parseDouble(countPemasukan.toString())));
+        pengeluaran.setText("Pengeluaran: " + formatRupiah(Double.parseDouble(countPengeluaran.toString())));
 
 
         AnyChartView anyChartView = findViewById(R.id.any_chart_view);
@@ -63,57 +71,25 @@ public class Beranda extends AppCompatActivity {
 
         cartesian.tooltip().positionMode(TooltipPositionMode.POINT);
 
-        cartesian.title("Trend of Sales of the Most Popular Products of ACME Corp.");
-
-        cartesian.yAxis(0).title("Number of Bottles Sold (thousands)");
+        cartesian.yAxis(0).title("nominal");
         cartesian.xAxis(0).labels().padding(5d, 5d, 5d, 5d);
 
         List<DataEntry> seriesData = new ArrayList<>();
-        seriesData.add(new CustomDataEntry("1986", 3.6, 2.3, 2.8));
-        seriesData.add(new CustomDataEntry("1987", 7.1, 4.0, 4.1));
-        seriesData.add(new CustomDataEntry("1988", 8.5, 6.2, 5.1));
-        seriesData.add(new CustomDataEntry("1989", 9.2, 11.8, 6.5));
-        seriesData.add(new CustomDataEntry("1990", 10.1, 13.0, 12.5));
-        seriesData.add(new CustomDataEntry("1991", 11.6, 13.9, 18.0));
-        seriesData.add(new CustomDataEntry("1992", 16.4, 18.0, 21.0));
-        seriesData.add(new CustomDataEntry("1993", 18.0, 23.3, 20.3));
-        seriesData.add(new CustomDataEntry("1994", 13.2, 24.7, 19.2));
-        seriesData.add(new CustomDataEntry("1995", 12.0, 18.0, 14.4));
-        seriesData.add(new CustomDataEntry("1996", 3.2, 15.1, 9.2));
-        seriesData.add(new CustomDataEntry("1997", 4.1, 11.3, 5.9));
-        seriesData.add(new CustomDataEntry("1998", 6.3, 14.2, 5.2));
-        seriesData.add(new CustomDataEntry("1999", 9.4, 13.7, 4.7));
-        seriesData.add(new CustomDataEntry("2000", 11.5, 9.9, 4.2));
-        seriesData.add(new CustomDataEntry("2001", 13.5, 12.1, 1.2));
-        seriesData.add(new CustomDataEntry("2002", 14.8, 13.5, 5.4));
-        seriesData.add(new CustomDataEntry("2003", 16.6, 15.1, 6.3));
-        seriesData.add(new CustomDataEntry("2004", 18.1, 17.9, 8.9));
-        seriesData.add(new CustomDataEntry("2005", 17.0, 18.9, 10.1));
-        seriesData.add(new CustomDataEntry("2006", 16.6, 20.3, 11.5));
-        seriesData.add(new CustomDataEntry("2007", 14.1, 20.7, 12.2));
-        seriesData.add(new CustomDataEntry("2008", 15.7, 21.6, 10));
-        seriesData.add(new CustomDataEntry("2009", 12.0, 22.5, 8.9));
+
+        for (int i = 0; i < 20; i++)
+        {
+            seriesData.add(new CustomDataEntry(String.valueOf(11+i), (Math.random() * 1000000 + 50000), (Math.random() * 1000000 + 50000)));
+        }
+
 
         Set set = Set.instantiate();
         set.data(seriesData);
-        Mapping series1Mapping = set.mapAs("{ x: 'x', value: 'value' }");
         Mapping series2Mapping = set.mapAs("{ x: 'x', value: 'value2' }");
         Mapping series3Mapping = set.mapAs("{ x: 'x', value: 'value3' }");
 
-        Line series1 = cartesian.line(series1Mapping);
-        series1.name("Brandy");
-        series1.hovered().markers().enabled(true);
-        series1.hovered().markers()
-                .type(MarkerType.CIRCLE)
-                .size(4d);
-        series1.tooltip()
-                .position("right")
-                .anchor(Anchor.LEFT_CENTER)
-                .offsetX(5d)
-                .offsetY(5d);
 
         Line series2 = cartesian.line(series2Mapping);
-        series2.name("Whiskey");
+        series2.name("Pengeluaran");
         series2.hovered().markers().enabled(true);
         series2.hovered().markers()
                 .type(MarkerType.CIRCLE)
@@ -125,7 +101,7 @@ public class Beranda extends AppCompatActivity {
                 .offsetY(5d);
 
         Line series3 = cartesian.line(series3Mapping);
-        series3.name("Tequila");
+        series3.name("Pendapatan");
         series3.hovered().markers().enabled(true);
         series3.hovered().markers()
                 .type(MarkerType.CIRCLE)
@@ -145,9 +121,8 @@ public class Beranda extends AppCompatActivity {
 
     private class CustomDataEntry extends ValueDataEntry {
 
-        CustomDataEntry(String x, Number value, Number value2, Number value3) {
-            super(x, value);
-            setValue("value2", value2);
+        CustomDataEntry(String x, Number value2, Number value3) {
+            super(x, value2);
             setValue("value3", value3);
         }
 
@@ -185,6 +160,11 @@ public class Beranda extends AppCompatActivity {
                 })
                 .setNegativeButton("Tidak", null)
                 .show();
+    }
+    private String formatRupiah(Double number){
+        Locale localeID = new Locale("in", "ID");
+        NumberFormat formatRupiah = NumberFormat.getCurrencyInstance(localeID);
+        return formatRupiah.format(number);
     }
 
 

@@ -6,19 +6,12 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
-import android.widget.SimpleAdapter;
 import android.widget.SimpleCursorAdapter;
-import android.widget.Toast;
 
 import org.hernanda.cashbook.Helper.SQLiteHelper;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 
 public class Detail extends AppCompatActivity {
     private Button backBtn;

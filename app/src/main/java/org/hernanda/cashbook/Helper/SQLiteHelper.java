@@ -40,9 +40,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sql = "CREATE TABLE "+TABLE_KEUANGAN+" ("+Table_Column_ID+" INTEGER PRIMARY KEY,"+Table_Column_Simbol+" VARCHAR, "+Table_Column_Tanggal+" VARCHAR, "+Table_Column_Nominal+" INT, "+Table_Column_Keterangan+" VARCHAR, "+Table_Column_Status+" VARCHAR);";
         db.execSQL(sql);
         sql = "INSERT INTO "+TABLE_KEUANGAN+" ("+Table_Column_ID+","+Table_Column_Simbol+", "+Table_Column_Tanggal+", "+Table_Column_Nominal+", "+Table_Column_Keterangan+", "+Table_Column_Status+") " +
-                "VALUES ('1', '[+]','10-05-2021', 100000, 'Sekolah', 'pemasukan')," +
-                "('2', '[-]','10-11-2021', 9000, 'laptop', 'pengeluaran')," +
-                "('3', '[+]','10-05-2021', 100000, 'Sekolah', 'pemasukan');";
+                "VALUES ('1', '[ + ]','10-05-2021', 100000, 'mendapat hadiah', 'pemasukan')," +
+                "('2', '[ - ]','10-11-2021', 90000, 'beli peralatan', 'pengeluaran')," +
+                "('3', '[ - ]','10-05-2021', 50000, 'makan', 'pengeluaran')," +
+                "('4', '[ + ]','10-05-2021', 350000, 'Proyek', 'pendapatan')," +
+                "('5', '[ - ]','10-05-2021', 4000, 'minum', 'pengeluaran');";
         db.execSQL(sql);
 
     }
