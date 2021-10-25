@@ -17,7 +17,7 @@ public class TambahPemasukan extends AppCompatActivity {
     private EditText tanggal, nominal, keterangan;
     private Button saveBtn, backBtn;
     private SQLiteHelper sqLiteHelper;
-
+    Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,21 +31,22 @@ public class TambahPemasukan extends AppCompatActivity {
         keterangan = findViewById(R.id.keterangan);
         sqLiteHelper = new SQLiteHelper(this);
 
-
         saveBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 String gettgl = tanggal.getText().toString();
-                String getnominal = nominal.getText().toString();
+                String getnominalstr = nominal.getText().toString();
                 String getket = keterangan.getText().toString();
+                String status = "pemasukan";
+                String simbol = "[+]";
 
-                if(TextUtils.isEmpty(gettgl) || TextUtils.isEmpty(getnominal) || TextUtils.isEmpty(getket)){
+                if(TextUtils.isEmpty(gettgl) || TextUtils.isEmpty(getnominalstr) || TextUtils.isEmpty(getket)){
                     Toast.makeText(TambahPemasukan.this,"Isikan Data dengan Lengkap!", Toast.LENGTH_LONG).show();
                 }else{
-
-
-
-
+                    sqLiteHelper.insertKeuangan(simbol,gettgl, Integer.valueOf(getnominalstr), getket, status);
+                    intent = new Intent(TambahPemasukan.this,Beranda.class);
+                    startActivity(intent);
+                    Toast.makeText(getApplicationContext(), "Berhasil Menambah Pemasukan",Toast.LENGTH_SHORT).show();
                 }
             }
         });

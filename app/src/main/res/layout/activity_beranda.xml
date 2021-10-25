@@ -13,7 +13,7 @@
         android:layout_height="0dp"
         android:layout_marginTop="20dp"
         android:layout_marginBottom="20dp"
-        app:layout_constraintBottom_toTopOf="@+id/layout_pendapatan"
+        app:layout_constraintBottom_toTopOf="@+id/imgButtonPemasukan"
         app:layout_constraintTop_toBottomOf="@+id/pemasukan" />
     <TextView
         android:id="@+id/title"
@@ -51,113 +51,107 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pengeluaran" />
 
-    <LinearLayout
-        android:id="@+id/layout_pendapatan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:clickable="true"
+    <ImageButton
+        android:id="@+id/imgButtonPemasukan"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="tambahPemasukan"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_detail"
+        android:elevation="5dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/tambah_pemasukan"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintStart_toStartOf="parent"
-        tools:ignore="OnClick">
+        app:srcCompat="@drawable/pemasukan"
+        tools:ignore="OnClick" />
 
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/pemasukan" />
-
-        <TextView
-            android:id="@+id/tambah_pe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tambah_pemasukan"
-            android:textAlignment="center"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_pengeluaran"
+    <TextView
+        android:id="@+id/tambah_pemasukan"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:clickable="true"
+        android:text="@string/tambah_pemasukan"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgButtonDetail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/imgButtonPengeluaran"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:onClick="tambahPengeluaran"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/layout_pengaturan"
+        android:elevation="5dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/tambah_pengeluaran"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:ignore="OnClick">
+        app:srcCompat="@drawable/pengeluaran"
+        tools:ignore="OnClick" />
 
-        <ImageView
-            android:id="@+id/imageView3"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/pengeluaran" />
-
-        <TextView
-            android:id="@+id/tambah_pengeluaran"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/tambah_pengeluaran"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_detail"
+    <TextView
+        android:id="@+id/tambah_pengeluaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:orientation="vertical"
+        android:text="@string/tambah_pengeluaran"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/imgButtonPengaturan"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+
+    <ImageButton
+        android:id="@+id/imgButtonDetail"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:elevation="5dp"
+        android:onClick="detail"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/detail"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/detail_cash_flow"
+        tools:ignore="OnClick"/>
+
+    <TextView
+        android:id="@+id/detail"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/detail"
+        android:textAlignment="center"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/detail_cash_flow" />
 
-        <TextView
-            android:id="@+id/detail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/detail"
-            android:textAlignment="center"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/layout_pengaturan"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
+    <ImageButton
+        android:id="@+id/imgButtonPengaturan"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
         android:clickable="true"
         android:onClick="pengaturan"
-        android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:elevation="5dp"
+        android:background="@drawable/shadow"
+        app:layout_constraintBottom_toTopOf="@+id/pengaturan"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/guideline"
-        tools:ignore="OnClick">
+        app:srcCompat="@drawable/pengaturan"
+        tools:ignore="OnClick" />
 
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            app:srcCompat="@drawable/pengaturan" />
-
-        <TextView
-            android:id="@+id/pengaturan"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/pengaturan"
-            android:textAlignment="center"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <TextView
+        android:id="@+id/pengaturan"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/pengaturan"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline"

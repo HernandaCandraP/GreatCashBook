@@ -26,12 +26,26 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import org.hernanda.cashbook.Helper.SQLiteHelper;
+
 public class Beranda extends AppCompatActivity {
+    private SQLiteHelper sqLiteHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_beranda);
+
+        sqLiteHelper = new SQLiteHelper(this);
+
+        Integer Pemasukan = sqLiteHelper.countDataPemasukan();
+        Integer Pengeluaran = sqLiteHelper.countDataPemasukan();
+
+
+
+//        System.out.println(sqLiteHelper.countDataPemasukan());
+
+
 
         AnyChartView anyChartView = findViewById(R.id.any_chart_view);
 
@@ -146,6 +160,10 @@ public class Beranda extends AppCompatActivity {
 
     public void tambahPengeluaran(View view){
         startActivity(new Intent(Beranda.this, TambahPengeluaran.class));
+    }
+
+    public void detail(View view){
+        startActivity(new Intent(Beranda.this, Detail.class));
     }
 
     public void pengaturan(View view){
