@@ -40,11 +40,11 @@ public class SQLiteHelper extends SQLiteOpenHelper {
         sql = "CREATE TABLE "+TABLE_KEUANGAN+" ("+Table_Column_ID+" INTEGER PRIMARY KEY,"+Table_Column_Simbol+" VARCHAR, "+Table_Column_Tanggal+" VARCHAR, "+Table_Column_Nominal+" INT, "+Table_Column_Keterangan+" VARCHAR, "+Table_Column_Status+" VARCHAR);";
         db.execSQL(sql);
         sql = "INSERT INTO "+TABLE_KEUANGAN+" ("+Table_Column_ID+","+Table_Column_Simbol+", "+Table_Column_Tanggal+", "+Table_Column_Nominal+", "+Table_Column_Keterangan+", "+Table_Column_Status+") " +
-                "VALUES ('1', '[ + ]','10-05-2021', 100000, 'mendapat hadiah', 'pemasukan')," +
-                "('2', '[ - ]','10-11-2021', 90000, 'beli peralatan', 'pengeluaran')," +
-                "('3', '[ - ]','10-05-2021', 50000, 'makan', 'pengeluaran')," +
-                "('4', '[ + ]','10-05-2021', 350000, 'Proyek', 'pendapatan')," +
-                "('5', '[ - ]','10-05-2021', 4000, 'minum', 'pengeluaran');";
+                "VALUES ('1', '[ + ]','10-05-2021', 100000, 'mendapat hadiah', '<<==')," +
+                "('2', '[ - ]','10-11-2021', 90000, 'beli peralatan', '==>>')," +
+                "('3', '[ - ]','10-05-2021', 50000, 'makan', '==>>')," +
+                "('4', '[ + ]','10-05-2021', 350000, 'Proyek', '<<==')," +
+                "('5', '[ - ]','10-05-2021', 4000, 'minum', '==>>');";
         db.execSQL(sql);
 
     }
@@ -111,7 +111,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public int countDataPemasukan() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(" + Table_Column_Nominal + ") as Total FROM " + TABLE_KEUANGAN + " Where "+Table_Column_Status+" = 'pemasukan'", null);
+        Cursor cursor = db.rawQuery("SELECT SUM(" + Table_Column_Nominal + ") as Total FROM " + TABLE_KEUANGAN + " Where "+Table_Column_Status+" = '<<=='", null);
 
         if(cursor.moveToFirst()) {
             return cursor.getInt(0);
@@ -121,7 +121,7 @@ public class SQLiteHelper extends SQLiteOpenHelper {
 
     public int countDataPengeluaran() {
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery("SELECT SUM(" + Table_Column_Nominal + ") as Total FROM " + TABLE_KEUANGAN + " Where "+Table_Column_Status+" = 'pengeluaran'", null);
+        Cursor cursor = db.rawQuery("SELECT SUM(" + Table_Column_Nominal + ") as Total FROM " + TABLE_KEUANGAN + " Where "+Table_Column_Status+" = '==>>'", null);
 
         if(cursor.moveToFirst()) {
             return cursor.getInt(0);

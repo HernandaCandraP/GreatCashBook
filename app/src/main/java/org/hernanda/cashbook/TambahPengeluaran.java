@@ -76,7 +76,7 @@ public class TambahPengeluaran extends AppCompatActivity {
                 String gettgl = tanggal.getText().toString();
                 String getnominalstr = MoneyTextWatcher.parseCurrencyValue(nominal.getText().toString()).toString();
                 String getket = keterangan.getText().toString();
-                String status = "pengeluaran";
+                String status = "==>>";
                 String simbol = "[ - ]";
 
                 if(TextUtils.isEmpty(gettgl) || TextUtils.isEmpty(getnominalstr) || TextUtils.isEmpty(getket)){
