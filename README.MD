@@ -11,6 +11,8 @@
   <img src="image/outcomePage.jpg" width="250">
 * Date Picker </br>
   <img src="image/datePicker.jpg" width="250">
+* Cash Flow Details </br>
+  <img src="image/cashFlowPage.jpg" width="250">
 * Setting Page </br>
   <img src="image/settingPage.jpg" width="250">
  
